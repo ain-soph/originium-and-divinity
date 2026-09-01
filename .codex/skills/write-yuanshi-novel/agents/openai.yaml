@@ -1,0 +1,4 @@
+interface:
+  display_name: "源石与神灵写作"
+  short_description: "继承《源石与神灵》的文风、思想、人物、构想、剧情与修订记忆"
+  default_prompt: "使用 $write-yuanshi-novel 按照已确认的文风、人物和结构方法分析或设计下一段小说。"
