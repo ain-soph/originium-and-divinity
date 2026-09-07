@@ -1,3 +1,5 @@
+> https://doc.localstate.app
+
 # 《源石与神灵》
 
 小说简介：
