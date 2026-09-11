@@ -1,0 +1,9 @@
+Mode: built-in image_gen
+
+Use case: precise-object-edit.
+Edit image 1, the high-quality original "2-9 hug reverse (missing finger).png". Produce one finished square illustration with BOTH foreground reaching gloved hands anatomically correct, using images 2 and 3 only as local hand-anatomy repair references.
+
+Image 1 is the sole master for the entire composition, resolution/detail, character identity, face and expression, blue hair and halo, costume, background rocks, lantern, warm orange rim light, rich color gradients and fine painted texture. Preserve it with maximum fidelity.
+Image 2 "left hand correct" and image 3 "right hand correct" are supporting anatomy references ONLY; do not inherit their softer lower-quality rendering, facial differences, or background.
+
+Repair the two large first-person hands reaching in from the left and right edges. Each must have exactly five anatomically coherent digits (one thumb and four fingers), natural finger lengths, separate readable fingertips, correct joint directions, correct left/right handedness for the two arms, consistent perspective and believable connection to its wrist. Match the appropriate corrected hand anatomy in the supplied references, while retaining the original reaching/embracing gesture, fingerless black gloves, red-brown double wrist straps, white sleeves, original arm placement and original lighting. Keep edits confined to the hands and the minimum immediately adjoining area needed for seamless anatomical repair. Do not change the central woman's hands at the bottom. Do not globally redraw, restyle, blur, smooth or simplify the illustration. No extra fingers, fused fingers, missing fingers, additional limbs, text or watermark. Return the full original composition as a single polished high-quality image, not a comparison or collage.

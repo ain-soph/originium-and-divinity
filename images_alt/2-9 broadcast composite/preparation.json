@@ -1,0 +1,49 @@
+{
+  "original_size": [
+    1448,
+    1086
+  ],
+  "repaired_size": [
+    1447,
+    1087
+  ],
+  "alignment": "Resize repaired only to original dimensions using Lanczos; original untouched. Stable head, halo, speech bubble and main figures visually checked.",
+  "cleanup_polygon": [
+    [
+      999,
+      151
+    ],
+    [
+      995,
+      152
+    ],
+    [
+      990,
+      157
+    ],
+    [
+      984,
+      162
+    ],
+    [
+      981,
+      165
+    ],
+    [
+      981,
+      190
+    ],
+    [
+      1008,
+      190
+    ],
+    [
+      1008,
+      151
+    ]
+  ],
+  "cleanup_source_offset": [
+    80,
+    0
+  ]
+}

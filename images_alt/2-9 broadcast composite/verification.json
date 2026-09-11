@@ -1,0 +1,13 @@
+{
+  "size": [
+    1448,
+    1086
+  ],
+  "mask_dtype": "bool",
+  "selected_pixels": 19803,
+  "selected_percent": 1.259309850126675,
+  "outside_mask_matches_original": true,
+  "inside_mask_matches_prepared_repair": true,
+  "source_images_unchanged": true,
+  "note": "Inside-mask verification is against prepared-repair.png, not the raw generated image. See preparation.json for repaired-only alignment and white-background clone patch."
+}
