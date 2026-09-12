@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""将《源石与神灵》的正文、章节草稿与可见思路资料汇编成单个 Markdown。"""
+"""汇编《源石与神灵》，排除文件名含“草稿”的资料。"""
 
 from __future__ import annotations
 
@@ -9,9 +9,8 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent
-OUTPUT = ROOT / "源石与神灵-完整汇编.md"
+OUTPUT = ROOT / "源石与神灵.md"
 VOLUMES = ["第一卷 巨熊喋血", "第二卷 十字军之神", "第三卷 那座塔"]
-SUPPLEMENTS = [ROOT / "草稿.md", ROOT / "第三卷 那座塔" / "README.md"]
 
 
 def natural_key(path: Path) -> tuple:
@@ -23,9 +22,7 @@ def natural_key(path: Path) -> tuple:
 
 
 def title_for(path: Path) -> str:
-    title = path.stem
-    title = re.sub(r"^（草稿）", "", title)
-    return title.strip()
+    return path.stem.strip()
 
 
 def shifted_headings(text: str, levels: int = 3) -> str:
@@ -65,6 +62,8 @@ def image_markdown_for(chapter: Path) -> list[str]:
 
 
 def append_source(lines: list[str], path: Path, heading: str, seen: dict[str, Path]) -> None:
+    if "草稿" in path.name:
+        return
     lines.extend([heading, "", f"> 来源：`{rel(path)}`", ""])
     if path.stat().st_size == 0:
         lines.extend(["*（空文件，保留章节占位）*", ""])
@@ -83,18 +82,17 @@ def append_source(lines: list[str], path: Path, heading: str, seen: dict[str, Pa
 
 def build() -> str:
     lines = [
-        "# 源石与神灵·完整汇编",
+        "# 源石与神灵",
         "",
-        "> 本文件由 `build_complete_markdown.py` 自动生成。原始文件保持不变；请不要直接编辑本汇编，否则下次生成时会被覆盖。",
-        "> “草稿”状态、空章节与重复章节均依原目录如实保留。",
-        "",
+        # "> 本文件由 `build_complete_markdown.py` 自动生成。原始文件保持不变；请不要直接编辑本汇编，否则下次生成时会被覆盖。",
+        # "",
         "## 目录",
         "",
         "- [小说简介](#小说简介)",
         "- [第一卷 巨熊喋血](#第一卷-巨熊喋血)",
         "- [第二卷 十字军之神](#第二卷-十字军之神)",
         "- [第三卷 那座塔](#第三卷-那座塔)",
-        "- [创作思路与补充资料](#创作思路与补充资料)",
+        "- [幕后](#幕后)",
         "",
         "## 小说简介",
         "",
@@ -108,18 +106,17 @@ def build() -> str:
     for volume in VOLUMES:
         lines.extend([f"## {volume}", ""])
         chapter_files = sorted((ROOT / volume).glob("*.md"), key=natural_key)
-        chapter_files = [path for path in chapter_files if path.name != "README.md"]
+        chapter_files = [
+            path for path in chapter_files
+            if path.name != "README.md"
+        ]
         for path in chapter_files:
-            state = " （草稿）" if path.name.startswith("（草稿）") else ""
-            append_source(lines, path, f"### {title_for(path)}{state}", seen)
-
-    lines.extend(["## 创作思路与补充资料", ""])
-    for path in SUPPLEMENTS:
-        if path.exists():
             append_source(lines, path, f"### {title_for(path)}", seen)
 
-    for path in sorted((ROOT / "fable").glob("*.md"), key=natural_key):
-        append_source(lines, path, f"### Fable 记录 {path.stem}", seen)
+    lines.extend(["## 幕后", ""])
+    for path in sorted((ROOT / "幕后").glob("*.md"), key=natural_key):
+        if path.name != "README.md":
+            append_source(lines, path, f"### {title_for(path)}", seen)
 
     return "\n".join(lines).rstrip() + "\n"
 
