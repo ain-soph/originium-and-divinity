@@ -10,7 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 OUTPUT = ROOT / "源石与神灵.md"
-VOLUMES = ["第一卷 巨熊喋血", "第二卷 十字军之神", "第三卷 那座塔"]
+VOLUMES = ["第一卷 巨熊喋血—乌萨斯的侠客", "第二卷 十字军之神—飞翔的萨科塔", "第三卷 那座塔—不老不死的猞猁"]
 
 
 def natural_key(path: Path) -> tuple:
@@ -62,7 +62,7 @@ def image_markdown_for(chapter: Path) -> list[str]:
 
 
 def append_source(lines: list[str], path: Path, heading: str, seen: dict[str, Path]) -> None:
-    if "草稿" in path.name:
+    if "草稿" in path.name or "幕后" in path.parts:
         return
     lines.extend([heading, "", f"> 来源：`{rel(path)}`", ""])
     if path.stat().st_size == 0:
@@ -89,10 +89,9 @@ def build() -> str:
         "## 目录",
         "",
         "- [小说简介](#小说简介)",
-        "- [第一卷 巨熊喋血](#第一卷-巨熊喋血)",
-        "- [第二卷 十字军之神](#第二卷-十字军之神)",
-        "- [第三卷 那座塔](#第三卷-那座塔)",
-        "- [幕后](#幕后)",
+        "- [第一卷 巨熊喋血](#第一卷：巨熊喋血—乌萨斯的侠客)",
+        "- [第二卷 十字军之神](#第二卷：十字军之神—飞翔的萨科塔)",
+        "- [第三卷 那座塔](#第三卷：那座塔—不老不死的猞猁)",
         "",
         "## 小说简介",
         "",
@@ -111,11 +110,6 @@ def build() -> str:
             if path.name != "README.md"
         ]
         for path in chapter_files:
-            append_source(lines, path, f"### {title_for(path)}", seen)
-
-    lines.extend(["## 幕后", ""])
-    for path in sorted((ROOT / "幕后").glob("*.md"), key=natural_key):
-        if path.name != "README.md":
             append_source(lines, path, f"### {title_for(path)}", seen)
 
     return "\n".join(lines).rstrip() + "\n"
