@@ -166,7 +166,7 @@ For <span style="color: red;">we</span> will sing Tomorrow's Song  因为我们�
 
 <span style="color: red;">The sun rises and must go down</span>  太阳升起，必定落下
 
-<span style="color: red;">Her promise stands, that peace has come</span>  唯有她的承诺永远站定，和平已经到来
+<span style="color: red;">Her promise stands, that peace has come</span>  唯有她的承诺永远站定，平安已经到来
 
 <span style="color: red;">For we are singing Tomorrow's Song</span>  因为我们正在唱响《明日之歌》
 
@@ -176,7 +176,7 @@ For <span style="color: red;">we</span> will sing Tomorrow's Song  因为我们�
 
 > But just hold fast, for peace will come  但请坚守，因为和平将会到来
 
-<span style="color: red;">The promise stands, that</span> peace <span style="color: red;">has</span> come  那承诺站定，和平已经到来
+<span style="color: red;">The promise stands, that</span> peace <span style="color: red;">has</span> come  那承诺站定，平安已经到来
 
 > For she will sing Tomorrow's Song  因为她将唱响《明日之歌》
 
